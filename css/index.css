@@ -1,7 +1,11 @@
 body {
-    background: black;
-    color: white;
+    background: #efefef;
     margin: 0;
+    font-family: "Microsoft YaHei"
+  }
+  *{
+      margin: 0;
+      padding: 0;
   }
   a {
     color: inherit;
@@ -14,22 +18,29 @@ body {
   }
   
   .topNavBar {
-    padding: 20px 16px 20px 16px;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+    /* padding: 20px 16px 20px 16px; */
   }
-  .topNavBar > nav {
+  .topNavBar-inner{
+    padding: 20px 16px;
+  }
+  .topNavBar  nav {
     padding-top: 7px;
   }
-  .topNavBar > nav > ul {
+  .topNavBar  nav > ul {
     list-style: none;
     margin: 0;
     padding: 0;
   }
-  .topNavBar > nav > ul > li {
+  .topNavBar  nav > ul > li {
     float: left;
     margin-left: 17px;
     margin-right: 17px;
   }
-  .topNavBar > nav > ul > li > a {
+  .topNavBar  nav > ul > li > a {
     font-size: 12px;
     color: #b7b7b7;
     font-weight: bold;
@@ -39,7 +50,7 @@ body {
     padding-bottom: 5px;
     display: block;
   }
-  .topNavBar > nav > ul > li > a:hover {
+  .topNavBar  nav > ul > li > a:hover {
     border-bottom: 3px solid #e06567;
   }
   
@@ -57,3 +68,152 @@ body {
     color: #9a9da2;
   }
   
+  .banner{
+      height: 515px;
+      background: url(../img/banner-bg.jpg)no-repeat;
+      background-size: cover; 
+  }
+  .banner .mask{
+      height: 515px;
+      background-color:rgba(0,0,0,0.8);
+  }
+  .usercard{
+      max-width: 940px;
+      margin-left:auto; 
+      margin-right: auto;
+      background-color: #ffffff;
+  }
+  .usercard .welcome{
+      position: relative;
+      display: inline-block;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: #e8676b;
+    padding:6px 17px;
+    margin-bottom: 18px;
+  }
+  .usercard .welcome .triangle{
+    position: absolute;
+    top: 100%;
+    left: 4px;
+    display: block;
+    border:10px solid transparent;
+    width: 0;
+    border-left-color:#e8676b;
+    border-top-width: 0;
+  }
+  .picture,.text{
+      float: left;
+  }
+
+  .pictureAndText{
+    padding: 50px;
+  }
+  .usercard .text{
+      margin-left: 65px;
+      width: 470px;
+  }
+  .usercard .text h1{
+      font-size: 36px;
+  }
+  .usercard .text p{
+      font-size: 18px;
+      color: #3d4451;
+      margin-bottom: 16px;
+  }
+  .usercard .text hr{
+      height: 0;
+      border: 0;
+      border-top: 1px solid #dedede;
+      margin: 20px 0;
+  }
+  .usercard .text dl dt,
+  .usercard .text dl dd{
+      float: left;
+      padding: 5px 0;
+  }
+  .usercard .text dl dt{
+      width: 30%;
+      color: #333;
+      font-weight: bold;
+  }
+  .usercard .text dl dd{
+     width: 70%;
+     color: #9da0a7;
+  }
+  .usercard>footer.media{
+    background: #E6686A;
+    text-align: center;
+  }
+  .usercard>footer a{
+      display: inline-block;
+      width: 40px;
+      line-height: 30px;
+      border-radius: 50%;
+      padding: 5px 0;
+      margin: 16px;
+  }
+  .usercard>footer a:hover{
+    background: #CF5D5F;
+  }
+  
+  .media svg{
+      width: 30px;
+      height: 30px;
+     fill: white;
+     vertical-align: top;
+  }
+   /* --------------------------------------------- */
+  /*  body{
+       background: #000;
+       margin:0;
+       color: #fff;
+   }
+   a{
+       color: inherit;
+       text-decoration: none;
+   }
+   .clearfix:after{
+     content: "";
+     display: block;
+     clear: both;
+   }
+   .header{
+       padding: 20px 16px 20px 16px;
+   }
+   ul{
+       list-style: none;
+       margin: 0;
+       padding: 0;
+   }
+   .header .logo,.header nav>ul li{
+   float: left;
+   }
+   .header nav{
+       float: right;
+       margin-top: 7px;
+   }
+   .header .logo{
+       font-size: 24px;
+       font-family: 'Arial Black';
+   }
+   .header .logo span:first-child{
+       color: #e6686a;
+   }
+   .header .logo span:last-child{
+    color: #9a9da2;
+   }
+   .header nav>ul>li{
+       margin: 0 17px;
+   }
+   .header nav>ul>li>a{
+       font-size: 12px;
+       color: #b7b7b7;font-weight: bold;
+       padding: 5px 0;
+       border-top: 3px solid transparent;
+       border-bottom: 3px solid transparent;
+       display: block;
+   }
+   .header nav>ul>li>a:hover{
+       border-bottom: 3px solid #e06567;
+   } */
