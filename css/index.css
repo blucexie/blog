@@ -16,7 +16,12 @@ body {
     display: block;
     clear: both;
   }
-  
+  h1,h2,h3,h4,h5,h6{
+      font-weight: normal;
+  }
+  ol,ul{
+      list-style: none;
+  }
   .topNavBar {
       width: 100%;
       position: fixed;
@@ -188,3 +193,94 @@ body {
     text-align: center;
     font-family: "KaiTi"
  }
+ section.skills,section.portfolio{
+     width: 940px;
+     margin-left: auto;
+     margin-right: auto;
+     margin-top: 60px;
+ }
+ section.skills>h2,section.portfolio>h2{
+    text-align: center;
+    color: #3d4451;
+    font-size: 34px;
+    line-height: 1.2;
+    font-weight: 600;
+
+ }
+ section.skills>ol{
+     background: #fff;
+     box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.5);
+     padding: 42px 50px 0;
+     margin-top: 30px;
+ }
+ section.skills>ol li{
+     float: left;
+     width: 48%;
+     padding-right: 10px;
+     box-sizing: border-box;
+ }
+ section.skills>ol li:nth-child(even){
+     float: right;
+ }
+ section.skills>ol li h3{
+     font-size: 14px;
+     line-height: 1.1;
+     padding-right: 40px;
+ }
+ section.skills .progressBar{
+     height: 5px;
+     background: #FAE1E1;
+     margin: 4px 0 40px;
+     border-radius: 2px;
+ }
+ section.skills .progressBar .progress{
+     height: 100%;
+     background: #e8676b;
+     width: 60%;
+     border-radius: 2px;
+ }
+ section.portfolio{
+     text-align: center;
+ }
+ section.portfolio>nav{
+     display: inline-block;
+     vertical-align: top;   
+     text-align: center;
+ }
+ section.portfolio ol{
+     display: inline-block;
+     vertical-align: top;
+     margin-top: 30px;
+ }
+ section.portfolio ol li{
+     float: left;
+     margin-left: 40px;
+     cursor: pointer;
+ }
+ section.portfolio ol li:nth-child(1){
+     margin-left: 0;
+ }
+ section.portfolio>nav .bar{
+     height: 5px;
+     background-color: #fff;
+     border-radius: 2px;
+     margin-top: 10px;
+ }
+ section.portfolio>nav .bar .barInner{
+     height: 100%;
+    background-color: #e8676b;
+    border-radius: 2px;
+    transition: all 0.3s;
+ }
+ section.portfolio>nav .bar.status-1 .barInner{
+     margin-left: 0;
+     width: 50px;
+ }
+ section.portfolio>nav .bar.status-2 .barInner{
+    margin-left: 65px;
+    width: 50px;
+}
+section.portfolio>nav .bar.status-3 .barInner{
+    margin-left: 140px;
+    width: 96px;
+}
