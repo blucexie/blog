@@ -284,3 +284,23 @@ section.portfolio>nav .bar.status-3 .barInner{
     margin-left: 140px;
     width: 96px;
 }
+.jobs{
+  position: relative;
+  margin-top: 28px;
+  height: 576px;
+}
+.jobs .big,.jobs .small{
+  position: absolute;
+}
+.jobs .big{
+  left: 0;
+  top: 0;
+}
+.jobs .small1{
+  top: 0;
+  left: 635px
+}
+.jobs .small2{
+  top: 298px;
+  left: 635px
+}
