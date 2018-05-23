@@ -10,21 +10,27 @@
             margin: 0;
             padding: 0;
         }
+        body{
+            background-color: #ddd;
+            background: url('img/alum.png')
+        }
         kbd{
             position: relative;
             display: inline-block;
-            font-size: 16px;
-            padding: 1em 1.5em;
-            color: #999;
+            width: 47px;
+            height: 69px;
+            line-height: 69px;
+            padding: 0 12px;
+            font-size: 24px;
+            color: #fff;
+            background-color:#000; 
             text-shadow: 0 1px 0 rgba(255,255,255,.75);
             text-align: center;
-            background: #F5F5F5;
             margin-right: 1em;
-            border-radius: 5px;
+            border-radius: 8px;
             text-transform:uppercase;
-            border-top: 1px solid #fff;
-            border-bottom: 1px solid #eee;
-            box-shadow: inset 0 0 2em rgba(0,0,0,.05), 0 3px 0 #ddd, 0 3px 2px rgba(0,0,0,.5);
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
         }
         main{
             text-align: center;
@@ -41,9 +47,6 @@
         }
         #main>div:nth-of-type(4){
             margin-left: 2em;
-        }
-        main{
-            background:#F3F3F3 url('img/bg.jpg')no-repeat 20% 0;
         }
         kbd>button{
             position: absolute;
@@ -108,17 +111,21 @@
             while(index2<row.length){
                 kbd = document.createElement('kbd');
                 div1.appendChild(kbd);
-                kbd.textContent = row[index2];
+                span = document.createElement('span');
+                kbd.appendChild(span)
+                span.textContent = row[index2];
+                img = document.createElement('img');
+                kbd.appendChild(img);
                 button = document.createElement('button');
                 kbd.appendChild(button);
                 button.textContent = 'E';
                 button.id = row[index2];
+                console.log();
                 button.onclick = function(e){
                    var key =  e.target.id;
                   x = prompt('给我一个网址');
                   hash[key] = x;
                   localStorage.setItem('zzz',JSON.stringify(hash))
-                  console.log(hash)
                 }
                 index2 = index2+1;
             }
