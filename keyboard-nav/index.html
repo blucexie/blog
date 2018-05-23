@@ -32,6 +32,17 @@
             box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
             cursor: pointer;
         }
+        kbd span{
+            position: absolute;
+            top: -14px;
+            left: 8px;
+            font-family: keyboard, "Arial Rounded", Helvetica, Arial, sans-serif;
+        }
+        kbd img{
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+        }
         main{
             text-align: center;
             padding: 80px 0;
@@ -51,8 +62,8 @@
         kbd>button{
             position: absolute;
             display: none;
-            right: 0;
-            bottom: 0;
+            right: 3px;
+            top: 3px;
             background: #FFA500;
             outline: none;
             border:0;
@@ -62,6 +73,15 @@
         }
         kbd:hover>button{
             display: inline-block;
+        }
+        kbd>img{
+            width: 16px;
+            height: 16px;
+        }
+        kbd>a{
+            display: inline-block;
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
@@ -75,24 +95,37 @@
     <footer></footer>
     <script>
         var keys = [
-            [1,2,3,4,5,6,7,8,9,0],
+          //  [1,2,3,4,5,6,7,8,9,0],
             ['q','w','e','r','t','y','u','i','o','p'],
             ['a','s','d','f','g','h','j','k','l'],
             ['z','x','c','v','b','n','m']
         ];
         var hash = {
             q:'qq.com',
-            w:'weobo.com',
+            w:'weibo.com',
             e:'ele.me',
-            r:'renren.com',
-            t:'tianya.com',
+            r:'baidu.com',
+            t:'taobao.com',
             y:'youtube.com',
-            u:'uc.com',
+            u:'uc.cn',
             i:'iqiyi.com',
             o:'oppo.com',
-            p:'pp.com',
+            p:'people.com.cn',
             a:'alibaba.com',
-            s:'souhu.com',
+            s:'sogou.com',
+            d:'dji.com',
+            f:'fengniao.com',
+            g:'guazi.com',
+            h:'hao123.com',
+            j:'jianshu.com',
+            k:'kuwo.cn',
+            l:'le.com',
+            z:'zhihu.com',
+            x:'panda.tv',
+            c:'58.com',
+            v:'vivo.com.cn',
+            b:'bilibili.com',
+            n:'tuniu.com',
             m:'mi.com'
         }
 
@@ -118,9 +151,16 @@
                 kbd.appendChild(img);
                 button = document.createElement('button');
                 kbd.appendChild(button);
+                var a = document.createElement('a');
+                kbd.appendChild(a);
+                a.href = 'http://'+ hash[row[index2]];
                 button.textContent = 'E';
                 button.id = row[index2];
-                console.log();
+                icon = 'http://'+ hash[row[index2]]+'/favicon.ico';
+                img.src = icon;
+                img.onerror = function(){
+                    img.src = 'http://qq.com/favicon.ico';
+                }
                 button.onclick = function(e){
                    var key =  e.target.id;
                   x = prompt('给我一个网址');
