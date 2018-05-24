@@ -11,29 +11,90 @@
             padding: 0;
         }
         #canvas{
-            position: relative;
-            width: 100vw;
-            height: 100vh;
             background: #ccc;
+           
+        }
+        button{
+            position: fixed;
+            top: 0;
+            left: 0;
         }
     </style>
 </head>
 <body>
-    <div id="canvas"></div>
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <button id="btn">橡皮擦</button>
     <script>
+        var canvas =document.getElementById('canvas');
+        var content = canvas.getContext('2d');
+
+        var pageWidth = document.documentElement.clientWidth;
+        var pageHeight = document.documentElement.clientHeight;
+        canvas.width = pageWidth;
+        canvas.height = pageHeight;
+        window.onresize = function(){
+            var pageWidth = document.documentElement.clientWidth;
+            var pageHeight = document.documentElement.clientHeight;
+            canvas.width = pageWidth;
+            canvas.height = pageHeight;
+        }
+       var isDown = false;
+       var lastPoint = {x:null,y:null};
         canvas.onmousedown = function(e){
-            var div = document.createElement('div');
-            canvas.appendChild(div);
             var x = e.clientX;
             var y = e.clientY;
-            div.style = 'width:10px;height:10px;background-color:#f00;'+
-            'border-radius:50%;position:absolute;left:'+(x-5)+'px;top:'+(y-5)+'px'
-        }
-        canvas.onmousemove = function(){
+            if(useE){
+                isDown = true;
+                content.clearRect(x-10,y-10,20,20);
+            }else{
+                isDown = true;
+                drowCircle(x,y,5);
+                lastPoint = {x:x,y:y};
+                console.log(lastPoint)
+            }
             
         }
+        canvas.onmousemove = function(e){
+            var x = e.clientX;
+                var y = e.clientY;
+            if(useE){
+                if(isDown){
+                    content.clearRect(x-10,y-10,20,20);
+                }
+            }else{
+                if(isDown){
+                drowCircle(x,y,5)
+                 newPoint= {x:x,y:y}
+                console.log(newPoint)
+                drowLine(lastPoint.x,lastPoint.y,newPoint.x,newPoint.y);
+                lastPoint = newPoint;
+            }
+            }
+            
+           
+        }
         canvas.onmouseup = function(){
+            isDown = false;
+        }
 
+        function drowCircle(x,y,radius){
+            content.beginPath();
+            content.fillStyle = 'blank';
+            content.arc(x,y,radius,0,Math.PI*2);
+            content.fill();
+        }
+
+        function drowLine(x1,y1,x2,y2){
+            content.beginPath();
+            content.strokeStyle = 'blank';
+            content.moveTo(x1,y1);
+            content.lineWidth=10;
+            content.lineTo(x2,y2);
+            content.stroke();
+        }
+        var useE = false;
+        btn.onclick = function(){
+            useE = !useE;
         }
     </script>
 </body>
