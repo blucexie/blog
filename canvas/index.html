@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>canvas</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #canvas{
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas"></div>
+    <script>
+        canvas.onmousedown = function(e){
+            var div = document.createElement('div');
+            canvas.appendChild(div);
+            var x = e.clientX;
+            var y = e.clientY;
+            div.style = 'width:10px;height:10px;background-color:#f00;'+
+            'border-radius:50%;position:absolute;left:'+(x-5)+'px;top:'+(y-5)+'px'
+        }
+        canvas.onmousemove = function(){
+            
+        }
+        canvas.onmouseup = function(){
+
+        }
+    </script>
+</body>
+</html>
