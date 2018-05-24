@@ -158,8 +158,8 @@
                 button.id = row[index2];
                 icon = 'http://'+ hash[row[index2]]+'/favicon.ico';
                 img.src = icon;
-                img.onerror = function(){
-                    img.src = 'http://qq.com/favicon.ico';
+                img.onerror = function(e){
+                    e.target.src = 'http://qq.com/favicon.ico';
                 }
                 button.onclick = function(e){
                    var key =  e.target.id;
