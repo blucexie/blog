@@ -4,14 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="//at.alicdn.com/t/font_683019_vkotym04x36usor.js"></script>
     <title>canvas</title>
     <style>
         *{
             margin: 0;
             padding: 0;
         }
+        .html,body{
+            height: 100%;
+        }
         #canvas{
             background: #ccc;
+            position: fixed;
+            top: 0;
+            left: 0;
            
         }
         button{
@@ -19,14 +26,102 @@
             top: 0;
             left: 0;
         }
+        .icon {
+       width: 1em; height: 1em;
+       vertical-align: -0.15em;
+       fill: currentColor;
+       overflow: hidden;
+    }
+    .iconS{
+        position: fixed;
+        top: 0;
+        left: 0;
+        margin: 10px;
+    }
+    .iconS svg{
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+        fill:#000;
+    }
+    .iconS svg.active{
+        fill:red;
+        transform: scale(1.2,1.2);
+    }
+    .color{
+        position: fixed;
+        top: 65px;
+        left: 10px;
+    }
+    .color>div{
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        margin: 20px 0;
+    }
+    .color>div.active{
+        transform: scale(1.2,1.2)
+    }
+    #red{
+        background: red;
+    }
+    #yellow{
+        background: yellow;
+    }
+    #blue{
+        background: blue;
+    }
+    .thickness{
+        position: fixed;
+        right: 10px;
+        top: 50px;
+    }
+    .thickness>div{
+        margin: 20px 0;
+    }
+    .thick{
+        width: 30px;
+        height: 10px;
+        background: #000;
+        border-radius: 10px;
+    }
+    .fine{
+        width: 30px;
+        height: 5px;
+        background: #000;
+        border-radius: 5px;
+    }
     </style>
 </head>
 <body>
     <canvas id="canvas" width="400" height="400"></canvas>
-    <button id="btn">橡皮擦</button>
+    <div class="iconS">
+        <svg id="pen" class="icon" aria-hidden="true">
+            <use xlink:href="#icon-pen"></use>
+        </svg>
+        <svg id="btn" class="icon" aria-hidden="true">
+            <use xlink:href="#icon-xiangpi"></use>
+        </svg>
+        <svg id="clear" class="icon" aria-hidden="true">
+            <use xlink:href="#icon-shanchu"></use>
+        </svg>
+        <svg id="save" class="icon" aria-hidden="true">
+            <use xlink:href="#icon-xiazai"></use>
+        </svg>
+    </div>
+    <div class="color">
+        <div id="red"></div>
+        <div id="yellow"></div>
+        <div id="blue"></div>
+    </div>
+    <div class="thickness">
+        <div id="thick" class="thick"></div>
+        <div id="fine" class="fine"></div>
+    </div>
     <script>
         var canvas =document.getElementById('canvas');
         var content = canvas.getContext('2d');
+        var lineWidth = 5;
 
         var pageWidth = document.documentElement.clientWidth;
         var pageHeight = document.documentElement.clientHeight;
@@ -50,7 +145,7 @@
                 content.clearRect(x-10,y-10,20,20);
             }else{
                 isDown = true;
-                drowCircle(x,y,5);
+              //  drowCircle(x,y,5);
                 lastPoint = {x:x,y:y};
             }
             
@@ -64,7 +159,7 @@
                 }
             }else{
                 if(isDown){
-                drowCircle(x,y,5)
+               // drowCircle(x,y,5)
                  newPoint= {x:x,y:y}
                 drowLine(lastPoint.x,lastPoint.y,newPoint.x,newPoint.y);
                 lastPoint = newPoint;
@@ -86,7 +181,7 @@
                 content.clearRect(x-10,y-10,20,20);
             }else{
                 isDown = true;
-                drowCircle(x,y,5);
+               // drowCircle(x,y,5);
                 lastPoint = {x:x,y:y};
             }
             
@@ -100,7 +195,7 @@
                 }
             }else{
                 if(isDown){
-                drowCircle(x,y,5)
+              //  drowCircle(x,y,5)
                  newPoint= {x:x,y:y}
                 drowLine(lastPoint.x,lastPoint.y,newPoint.x,newPoint.y);
                 lastPoint = newPoint;
@@ -118,22 +213,70 @@
 
         function drowCircle(x,y,radius){
             content.beginPath();
-            content.fillStyle = 'blank';
+           // content.fillStyle = 'blank';
             content.arc(x,y,radius,0,Math.PI*2);
             content.fill();
         }
 
         function drowLine(x1,y1,x2,y2){
             content.beginPath();
-            content.strokeStyle = 'blank';
+           // content.strokeStyle = 'blank';
             content.moveTo(x1,y1);
-            content.lineWidth=10;
+            content.lineWidth=lineWidth;
             content.lineTo(x2,y2);
             content.stroke();
         }
         var useE = false;
         btn.onclick = function(){
             useE = !useE;
+        }
+        pen.onclick = function(){
+            useE = false;
+            pen.classList.add('active')
+            btn.classList.remove('active')
+        }
+        btn.onclick = function(){
+            useE = true;
+            btn.classList.add('active')
+            pen.classList.remove('active')
+        }
+        red.onclick = function(){
+            content.fillStyle = 'red';
+            content.strokeStyle = 'red';
+            red.classList.add('active');
+            yellow.classList.remove('active');
+            blue.classList.remove('active');
+        }
+        yellow.onclick = function(){
+            content.fillStyle = 'yellow';
+            content.strokeStyle = 'yellow';
+            yellow.classList.add('active');
+            red.classList.remove('active');
+            blue.classList.remove('active');
+        }
+        blue.onclick = function(){
+            content.fillStyle = 'blue';
+            content.strokeStyle = 'blue';
+            blue.classList.add('active');
+            yellow.classList.remove('active');
+            red.classList.remove('active');
+        }
+        clear.onclick = function(){
+            content.clearRect(0,0,canvas.width,canvas.height)
+        }
+        save.onclick = function(){
+            var url = canvas.toDataURL("image/png");
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = '我的画';
+            a.target = '_blank';
+            a.click();
+        }
+        thick.onclick = function(){
+            lineWidth=10;
+        }
+        fine.onclick = function(){
+            lineWidth = 5;
         }
     </script>
 </body>
