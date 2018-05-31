@@ -1,177 +1,286 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>个人简历</title>
     <link rel="stylesheet" href="./css/index.css">
     <script src="//at.alicdn.com/t/font_672444_vczkhd96jws1c3di.js"></script>
     <style type="text/css">
+        .loading {
+            width: 200px;
+            height: 200px;
+            position: relative;
+        }
+
+        .loading::before,
+        .loading::after {
+            content: "";
+            width: 0px;
+            height: 0px;
+            border-radius: 50%;
+            background: #333;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            animation: s 1.5s linear infinite;
+        }
+
+        .loading::after {
+            animation-delay: 0.75s;
+        }
+
+        @keyframes s {
+            0% {
+                width: 0px;
+                height: 0px;
+                opacity: 1;
+            }
+            100% {
+                width: 50px;
+                height: 50px;
+                opacity: 0;
+            }
+        }
+
+        .site-welcome {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #888;
+            z-index: 1;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .site-welcome.active {
+            display: flex;
+        }
+
         .icon {
-           width: 1em; height: 1em;
-           vertical-align: -0.15em;
-           fill: currentColor;
-           overflow: hidden;
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
         }
     </style>
-  </head>
-  <body>
-    <div class="topNavBar">
+</head>
+
+<body>
+    <div id="siteWelcome" class="site-welcome active">
+        <div class="loading"></div>
+    </div>
+    <div id="topNavBar" class="topNavBar">
         <div class="topNavBar-inner clearfix">
             <a class="logo" href="#" alt="logo" style="float: left;">
-                <span class="rs">RS</span><span class="card">card</span>
-                </a>
-                <nav style="float: right;">
-                    <ul class="clearfix">
-                        <li><a href="#">关于</a></li>
-                        <li><a href="#">技能</a></li>
-                        <li><a href="#">作品</a></li>
-                        <li><a href="#">博客</a></li>
-                        <li><a href="#">日历</a></li>
-                        <li><a href="#">联系方式</a></li>
-                        <li><a href="#">其他</a></li>
-                    </ul>
-                </nav>
+                <span class="rs">RS</span>
+                <span class="card">card</span>
+            </a>
+            <nav class="menu" style="float: right;">
+                <ul class="clearfix">
+                    <li>
+                        <a href="#">关于</a>
+                    </li>
+                    <li>
+                        <a href="#">技能</a>
+                    </li>
+                    <li>
+                        <a href="#">作品</a>
+                        <ul class="submenu">
+                            <li>作品1</li>
+                            <li>作品2</li>
+                            <li>作品3</li>
+                        </ul>  
+                    </li>
+                    <li>
+                        <a href="#">博客</a>
+                        <ul class="submenu">
+                            <li>博客1</li>
+                            <li>博客2</li>
+                            <li>博客3</li>
+                        </ul>  
+                    </li>
+                    <li>
+                        <a href="#">日历</a>
+                    </li>
+                    <li>
+                        <a href="#">联系方式</a>
+                    </li>
+                    <li>
+                        <a href="#">其他</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
-     
+
     </div>
     <div class="banner">
         <div class="mask"></div>
     </div>
     <main>
-      <div class="usercard">
-        <div class="pictureAndText clearfix">
-          <div class="picture">
-            <img src="img/avatar.jpg" width="299" height="347" alt="头像">
-          </div>
-           <div class="text">
-                <div class="profile">
-                    <span class="welcome">Hello 
-                        <span class="triangle"></span>
+        <div class="usercard">
+            <div class="pictureAndText clearfix">
+                <div class="picture">
+                    <img src="img/avatar.jpg" width="299" height="347" alt="头像">
+                </div>
+                <div class="text">
+                    <div class="profile">
+                        <span class="welcome">Hello
+                            <span class="triangle"></span>
                         </span>
-                    <h1>谢玉琪</h1>
-                    <p>前端开发工程师</p>
-                    <hr>
-                    <dl>
-                        <dt>年龄</dt>
-                        <dd>18</dd>
-                        <dt>所在城市</dt>
-                        <dd>北京</dd>
-                        <dt>邮箱</dt>
-                        <dd>649453836@qq.com</dd>
-                        <dt>手机</dt>
-                        <dd>13124771727</dd>
-                    </dl>
+                        <h1>谢玉琪</h1>
+                        <p>前端开发工程师</p>
+                        <hr>
+                        <dl>
+                            <dt>年龄</dt>
+                            <dd>18</dd>
+                            <dt>所在城市</dt>
+                            <dd>北京</dd>
+                            <dt>邮箱</dt>
+                            <dd>649453836@qq.com</dd>
+                            <dt>手机</dt>
+                            <dd>13124771727</dd>
+                        </dl>
                     </div>
-           </div>
-        </div>
-        <footer class="media">
-            <a href="###">
+                </div>
+            </div>
+            <footer class="media">
+                <a href="###">
                     <svg class="icon" aria-hidden="true">
                         <use xlink:href="#icon-qq"></use>
                     </svg>
-            </a>
-            <a href="###">
-                <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-weixin"></use>
-                </svg>
-            </a>
-            <a href="#">
-                <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-weibo"></use>
-                </svg>
-            </a>
-            <a href="#">
-                <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-github"></use>
-                </svg>
-            </a>
-        </footer>
-      </div>
+                </a>
+                <a href="###">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-weixin"></use>
+                    </svg>
+                </a>
+                <a href="#">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-weibo"></use>
+                    </svg>
+                </a>
+                <a href="#">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                </a>
+            </footer>
+        </div>
 
-      <p >
-        <a class="button" href="css/resume.pdf" download>下载 PDF 简历</a>
-      </p>
-      <p class="introduce">
-            不爱我就拉倒，离开之前，不要爱的抱抱，反正 我又不是没有人要<br>
-            哥练的胸肌 如果你还想靠 好胆你就麦造
-      </p>
-     <!--  <audio src="css/mo.mp3" autoplay="autoplay"></audio> -->
+        <p>
+            <a class="button" href="css/resume.pdf" download>下载 PDF 简历</a>
+        </p>
+        <p class="introduce">
+            不爱我就拉倒，离开之前，不要爱的抱抱，反正 我又不是没有人要
+            <br> 哥练的胸肌 如果你还想靠 好胆你就麦造
+        </p>
+        <!--  <audio src="css/mo.mp3" autoplay="autoplay"></audio> -->
     </main>
     <section class="skills">
-      <h2>技能</h2>
-      <ol class="clearfix">
-        <li>
-           <h3>HTML 5 &amp; CSS 3</h3>
-            <div class="progressBar">
-                <div class="progress" style="width: 20%;"></div>
-            </div>
-        </li>
-        <li>
-            <h3>JavaScript</h3>
-            <div class="progressBar">
-                <div class="progress" style="width: 30%;"></div>
-            </div>
-        </li>
-        <li>
-            <h3>jQuery</h3>
-            <div class="progressBar">
-                <div class="progress" style="width: 50%;"></div>
-            </div>
-        </li>
-        <li>
-            <h3>Vue</h3>
-            <div class="progressBar">
-                <div class="progress" style="width: 70%;"></div>
-            </div>
-        </li>
-        <li>
-            <h3>React</h3>
-            <div class="progressBar">
-                <div class="progress" style="width: 60%;"></div>
-            </div>
-        </li>
-        <li>
-            <h3>HTTP</h3>
-            <div class="progressBar">
-                <div class="progress" style="width: 40%;"></div>
-            </div>
-        </li>
-      </ol>
+        <h2>技能</h2>
+        <ol class="clearfix">
+            <li>
+                <h3>HTML 5 &amp; CSS 3</h3>
+                <div class="progressBar">
+                    <div class="progress" style="width: 20%;"></div>
+                </div>
+            </li>
+            <li>
+                <h3>JavaScript</h3>
+                <div class="progressBar">
+                    <div class="progress" style="width: 30%;"></div>
+                </div>
+            </li>
+            <li>
+                <h3>jQuery</h3>
+                <div class="progressBar">
+                    <div class="progress" style="width: 50%;"></div>
+                </div>
+            </li>
+            <li>
+                <h3>Vue</h3>
+                <div class="progressBar">
+                    <div class="progress" style="width: 70%;"></div>
+                </div>
+            </li>
+            <li>
+                <h3>React</h3>
+                <div class="progressBar">
+                    <div class="progress" style="width: 60%;"></div>
+                </div>
+            </li>
+            <li>
+                <h3>HTTP</h3>
+                <div class="progressBar">
+                    <div class="progress" style="width: 40%;"></div>
+                </div>
+            </li>
+        </ol>
     </section>
     <section class="portfolio">
-      <h2>作品集</h2>
-      <nav>
-        <ol class="clearfix">
-          <li id="li1">所有</li>
-          <li id="li2">框架</li>
-          <li id="li3">原生JS&amp;CSS</li>
-        </ol>
-        <div id="bar" class="bar status-1">
-            <div class="barInner "></div>
-        </div>
-      </nav>
+        <h2>作品集</h2>
+        <nav>
+            <ol class="clearfix">
+                <li id="li1">所有</li>
+                <li id="li2">框架</li>
+                <li id="li3">原生JS&amp;CSS</li>
+            </ol>
+            <div id="bar" class="bar status-1">
+                <div class="barInner "></div>
+            </div>
+        </nav>
 
-      <div class="jobs">
-        <div class="big">
-            <img src="img/p1.jpg" alt="">
+        <div class="jobs">
+            <div class="big">
+                <img src="img/p1.jpg" alt="">
+            </div>
+            <div class="small small1">
+                <img src="img/P2.jpg" alt="">
+            </div>
+            <div class="small small2">
+                <img src="img/p3.jpg" alt="">
+            </div>
         </div>
-        <div class="small small1">
-            <img src="img/P2.jpg" alt="">
-        </div>
-        <div class="small small2">
-            <img src="img/p3.jpg" alt="">
-        </div>
-      </div>
     </section>
     <script>
-        li1.onclick = function(){
+        li1.onclick = function () {
             bar.className = 'bar status-1'
         }
-        li2.onclick = function(){
+        li2.onclick = function () {
             bar.className = 'bar status-2'
         }
-        li3.onclick = function(){
+        li3.onclick = function () {
             bar.className = 'bar status-3'
         }
+        setTimeout(function () {
+            siteWelcome.classList.remove('active')
+        }, 1000)
+
+        window.onscroll = function (e) {
+            if (window.scrollY) {
+                topNavBar.classList.add('sticky');
+            } else {
+                topNavBar.classList.remove('sticky');
+            }
+        }
+
+        let liTags = document.querySelectorAll('nav.menu > ul > li');
+        for(let i = 0;i< liTags.length;i++){
+            liTags[i].onmouseenter = function(x){
+                x.currentTarget.classList.add('active')
+            }
+            liTags[i].onmouseleave = function(x){
+                x.currentTarget.classList.remove('active')
+            }
+        }
     </script>
-  </body>
+</body>
+
 </html>
