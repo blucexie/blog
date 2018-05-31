@@ -286,11 +286,11 @@
             aTags[i].onclick = function(e){
                 e.preventDefault();
                 let a = e.currentTarget;
-                console.log(a)
                 let href = a.getAttribute('href');
-                let element = document.querySelectorAll('href');
+                let element = document.querySelector(href);
                 let top = element.offsetTop;
-                window.screenTo(0,top-80)
+                console.log(top)
+                window.scrollTo(0,top-80)
             }
           }
 
