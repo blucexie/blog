@@ -100,9 +100,6 @@ body {
       margin-right: 0%;
     }
   }
-  /* .topNavBar .submenu.active{
-      display: block;
-  } */
   .topNavBar .submenu li{
     white-space: nowrap;
     padding: 5px 10px;
