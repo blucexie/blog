@@ -69,6 +69,27 @@
             fill: currentColor;
             overflow: hidden;
         }
+       /*  [data-x].active{
+            border: 10px solid #f00;
+        } */
+        [data-x].offset{
+            transform: translateY(100px);
+        }
+        [data-x]{
+            transform: translateY(0);
+            transition: all 0.5s;
+        }
+        [data-x].animate{
+            animation: slideUp 0.5s;
+        }
+        @keyframes slideUp{
+            0%{
+                transform: translateY(-30px);
+            }
+            100%{
+                transform: translateY(0)
+            }
+        }
     </style>
 </head>
 
@@ -123,8 +144,8 @@
     <div class="banner">
         <div class="mask"></div>
     </div>
-    <main id="siteAbout">
-        <div class="usercard">
+    <main >
+        <div data-x id="siteAbout"  class="usercard">
             <div class="pictureAndText clearfix">
                 <div class="picture">
                     <img src="img/avatar.jpg" width="299" height="347" alt="头像">
@@ -183,7 +204,7 @@
         </p>
         <!--  <audio src="css/mo.mp3" autoplay="autoplay"></audio> -->
     </main>
-    <section id="siteSkill" class="skills">
+    <section data-x id="siteSkill" class="skills">
         <h2>技能</h2>
         <ol class="clearfix">
             <li>
@@ -224,7 +245,7 @@
             </li>
         </ol>
     </section>
-    <section id="siteWork" class="portfolio">
+    <section data-x id="siteWork" class="portfolio">
         <h2>作品集</h2>
         <nav>
             <ol class="clearfix">
@@ -262,15 +283,9 @@
         }
         setTimeout(function () {
             siteWelcome.classList.remove('active')
-        }, 1000)
+        }, 100)
 
-        window.onscroll = function (e) {
-            if (window.scrollY) {
-                topNavBar.classList.add('sticky');
-            } else {
-                topNavBar.classList.remove('sticky');
-            }
-        }
+       
 
         let liTags = document.querySelectorAll('nav.menu > ul > li');
         for(let i = 0;i< liTags.length;i++){
@@ -312,7 +327,45 @@
                 .start(); // 开始缓动
             }
           }
+          let specialTags = document.querySelectorAll('[data-x]');
+            for(let i=0;i<specialTags.length;i++){
+                specialTags[i].classList.add('offset'); 
+                
+            }
+            setTimeout(function () {
+                initSlideUp();
+        }, 200)
+          window.onscroll = function (e) {
+            if (window.scrollY) {
+                topNavBar.classList.add('sticky');
+            } else {
+                topNavBar.classList.remove('sticky');
+            }
 
+           initSlideUp();
+        }
+          
+          function initSlideUp(){
+            let specialTags = document.querySelectorAll('[data-x]');
+            let minIndex = 0;
+            for(let i=0;i<specialTags.length;i++){
+                if(Math.abs(specialTags[i].offsetTop-window.scrollY)<Math.abs(specialTags[minIndex].offsetTop - window.scrollY)){
+                    minIndex = i;
+                }
+            }
+            specialTags[minIndex].classList.remove('offset')
+            for(let i = 0;i<specialTags.length;i++){
+                specialTags[i].classList.remove('active');
+            }
+           let id = specialTags[minIndex].id;
+           let a = document.querySelector('a[href= "#'+id+'"]');
+           let li = a.parentNode;
+           let brothers = li.parentNode.children;
+           for(let i=0;i<brothers.length;i++){
+            brothers[i].classList.remove('heightlight')
+           }
+           li.classList.add('heightlight')
+          }
     </script>
 </body>
 
