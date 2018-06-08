@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .blue {
+            color: blue;
+        }
+
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li id="item1">item1</li>
+        <li id="item2">item2</li>
+        <li id="item3">item3</li>
+        <li id="item4">item4</li>
+        <li id="item5">item5</li>
+    </ul>
+    <div>
+        div1
+    </div>
+    <div>
+        div2
+    </div>
+    <script>
+        /* window.xyDom = {};
+                xyDom.getSiblings = function getSiblings(node){
+                    let allChildren = node.parentNode.children;
+                    let array = {length:0};
+                    for(let i = 0;i<allChildren.length;i++){
+                        if(allChildren[i]!==node){
+                            array[array.length]= allChildren[i];
+                            array.length+=1;
+                        }
+                    }
+                    return array;
+                 }
+                
+                console.log( xyDom.getSiblings(item3))
+         */
+
+        /*   Node.prototype.getSiblings = function getSiblings(){
+            let allChildren = this.parentNode.children;
+            let array = {length:0};
+            for(let i = 0;i<allChildren.length;i++){
+                if(allChildren[i]!==this){
+                    array[array.length]= allChildren[i];
+                    array.length+=1;
+                }
+            }
+            return array;
+         }
+         
+        console.log( item2.getSiblings())
+ */
+        /*  xyDom.addClass =function(node,classes){
+             classes.forEach((value)=>node.classList.add(value))
+          }
+          xyDom.addClass(item1,['v','c','g']) */
+
+        /*    Node.prototype.addClass = function(classes){
+              classes.forEach((value)=>this.classList.add(value))
+           }
+
+           item4.addClass.call(item4,['d','g','y']) */
+
+
+        window.jQuery = function (nodeorSelector) {
+            let nodes = {};
+            if (typeof nodeorSelector === 'string') {
+                let temp = document.querySelectorAll(nodeorSelector);
+                for (let i = 0; i < temp.length; i++) {
+                    nodes[i] = temp[i];
+                }
+                nodes.length = temp.length;
+            } else if (nodeorSelector instanceof Node) {
+                nodes = {
+                    0: nodeorSelector,
+                    length: 1
+                }
+            }
+            nodes.addClass = function (classes) {
+                /*  classes.forEach((value) => {
+                     for(let i = 0;i<nodes.length;i++){
+                        nodes[i].classList.add(value)
+                     }
+                 }); */
+                for (let i = 0; i < nodes.length; i++) {
+                    nodes[i].classList.add(classes)
+                }
+            }
+            nodes.setText = function (text) {
+                if (text === undefined) {
+                    let texts = [];
+                    for (let i = 0; i < nodes.length; i++) {
+                        texts.push(nodes[i].textContent)
+                    }
+                    return texts;
+                } else {
+                    for (let i = 0; i < nodes.length; i++) {
+                        nodes[i].textContent = text;
+                    }
+                }
+
+            }
+            return nodes;
+        }
+        window.$ = jQuery;
+        var $div = $('div');
+        $div.addClass('red');
+        $div.setText('hi')
+        // var node2 = jquery('ul>li');
+        // node2.addClass(['blue'])
+        //  node2.text('xx')
+        //console.log(node2.text())
+    </script>
+</body>
+
+</html>
