@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        .images {
+            display: flex;
+            align-items: flex-start;
+            transition: all 1s;
+        }
+
+        .wrap {
+            width: 300px;
+            overflow: hidden;
+        }
+
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="images">
+            <img src="https://images.qianxian001.com/180115/1516003552Y0-WS1_lit.jpg" width="300" alt="">
+            <img src="http://i.epochtimes.com/assets/uploads/2017/01/Screen-Shot-2017-01-16-at-3.04.29-PM-600x400.png" width="300" alt="">
+            <img src="http://i.epochtimes.com/assets/uploads/2017/01/cat-600x400.jpg" width="300" alt="">
+            <img src="http://www.tvmost.com.hk/most/uploads/images/2015/Article/2016.01/2016.01.08/cupcat/3.jpg" width="300" alt="">
+        </div>
+        
+    </div>
+    <div class="btns">
+            <button>图片1</button>
+            <button>图片2</button>
+            <button>图片3</button>
+            <button>图片4</button>
+        </div>
+    <script>
+        let allBtns = $('.btns button');
+        for (let i = 0; i < allBtns.length; i++) {
+            $(allBtns[i]).on('click', function (x) {
+                let index = $(x.currentTarget).index();
+                let s = index * -300;
+                $('.images').css({
+                    transform: 'translateX(' + s + 'px)'
+                })
+                n = index;
+                allBtns.eq(n).addClass('red').siblings('.red').removeClass('red');
+            })
+        }
+
+        let n = 0;
+        let size = allBtns.length;
+        //  allBtns.eq(n % size).trigger('click').addClass('red').siblings('.red').removeClass('red');
+        let timerId =setTimer()
+
+        function setTimer() {
+           return setInterval(() => {
+                n++;
+                allBtns.eq(n % size).trigger('click').addClass('red').siblings('.red').removeClass('red');
+
+            }, 1000)
+        }
+        $('.wrap').on('mouseenter', function () {
+            clearInterval(timerId);
+        })
+        $('.wrap').on('mouseleave', function () {
+            timerId = setTimer(); 
+        })
+    </script>
+</body>
+
+</html>
