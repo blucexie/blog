@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dom时间</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        .wrap {
+            position: relative;
+            display: inline-block;
+        }
+
+        .popover {
+            position: absolute;
+            border: 1px solid #f00;
+            padding: 10px;
+            top: 0;
+            left: 100%;
+            margin-left: 10px;
+            white-space: nowrap;
+            display: none;
+        }
+
+        .popover::before {
+            content: "";
+            position: absolute;
+            right: 100%;
+            top: 2px;
+            border: 10px solid transparent;
+            border-right-color: red;
+        }
+
+        .popover::after {
+            content: "";
+            position: absolute;
+            right: 100%;
+            top: 2px;
+            border: 10px solid transparent;
+            border-right-color: white;
+            margin-right: -1px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <button id="btn">点我</button>
+        <div class="popover">
+            <input type="checkbox"> 浮层</div>
+    </div>
+    <script>
+        $('#btn').on('click', function (e) {
+            $('.popover').show();
+            console.log('show')
+            setTimeout(() => {
+                $(document).one('click', function () {
+                    $('.popover').hide();
+                    console.log('hide')
+                })
+            }, 0);
+        })
+           $('.wrap').on('click',function(e){
+               e.stopPropagation()
+           })
+    </script>
+</body>
+
+</html>
