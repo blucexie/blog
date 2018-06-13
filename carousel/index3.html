@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>无缝轮播</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .wrap {
+            width: 300px;
+            /* height: 200px; */
+            margin: 20px auto;
+            overflow: hidden;
+        }
+
+        .images {
+            display: flex;
+            transition: all 1s;
+        }
+
+        .images>img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div id="slides" class="images">
+            <img src="https://images.qianxian001.com/180115/1516003552Y0-WS1_lit.jpg" width="300" height="200" alt="">
+            <img src="http://i.epochtimes.com/assets/uploads/2017/01/Screen-Shot-2017-01-16-at-3.04.29-PM-600x400.png" width="300" height="200"
+                alt="">
+            <img src="http://i.epochtimes.com/assets/uploads/2017/01/cat-600x400.jpg" width="300" height="200" alt="">
+            <img src="http://www.tvmost.com.hk/most/uploads/images/2015/Article/2016.01/2016.01.08/cupcat/3.jpg" width="300" height="200"
+                alt="">
+        </div>
+        <div id="controls" style="text-align:center;">
+            <button id="previous">上一张</button>
+            <button id="next">下一张</button>
+        </div>
+        <div class="btns">
+            <button>图片1</button>
+            <button>图片2</button>
+            <button>图片3</button>
+            <button>图片4</button>
+        </div>
+    </div>
+    <script>
+        let $buttons = $('.btns>button');
+        let $slides = $('#slides');
+        let current = 0;
+        let $imgaes = $slides.children('img');
+
+        makeFakeSlides()
+        $slides.css({
+            transform: 'translateX(-300px)'
+        });
+
+        $(next).on('click', () => {
+            goToSlide(current + 1)
+        })
+        $(previous).on('click', () => {
+            goToSlide(current - 1)
+        })
+
+        let timer = setInterval(() => {
+            goToSlide(current + 1)
+        }, 2000)
+
+        $('.wrap').on('mouseenter', function () {
+            clearInterval(timer)
+        }).on('mouseleave', function () {
+            timer = setInterval(() => {
+                goToSlide(current + 1)
+            }, 2000)
+        })
+        bindWvents()
+
+        function bindWvents() {
+
+            $('.btns').on('click', 'button', function (e) {
+                let $button = $(e.currentTarget);
+                let index = $button.index();
+                goToSlide(index);
+            })
+        }
+        //重要，抽离出来，上一张下一张都方便
+        function goToSlide(index) {
+            if (index > $buttons.length - 1) {
+                index = 0;
+            } else if (index < 0) {
+                index = $buttons.length - 1
+            }
+
+            if (current === $buttons.length - 1 && index === 0) {
+                //最后一张到第一张
+                $slides.css({
+                        transform: `translateX(${-($buttons.length+1)*300}px)`
+                    })
+                    .one('transitionend', function () {
+                        $slides.hide().offset()
+                        $slides.css({
+                            transform: `translateX(${-(index+1)*300}px)`
+                        }).show();
+                    })
+                console.log('here')
+            } else if (current === 0 && index === $buttons.length - 1) {
+                //第一张到最后一张
+                $slides.css({
+                        transform: 'translateX(0)'
+                    })
+                    .one('transitionend', function () {
+                        $slides.hide().offset()
+                        $slides.css({
+                            transform: `translateX(${-(index+1)*300}px)`
+                        }).show();
+                    })
+
+            } else {
+                $slides.css({
+                    transform: `translateX(${-(index+1)*300}px)`
+                });
+            }
+            current = index;
+        }
+
+        function makeFakeSlides() {
+            let $firstCopy = $imgaes.eq(0).clone(true);
+            let $lastCopy = $imgaes.eq($imgaes.length - 1).clone(true);
+            $slides.append($firstCopy);
+            $slides.prepend($lastCopy);
+
+        }
+    </script>
+</body>
+
+</html>
