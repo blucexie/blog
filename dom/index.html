@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dom时间</title>
+    <title>Dom</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <style>
         .wrap {
@@ -52,19 +52,21 @@
             <input type="checkbox"> 浮层</div>
     </div>
     <script>
+        
         $('#btn').on('click', function (e) {
-            $('.popover').show();
-            console.log('show')
+            $('.popover').toggle();
             setTimeout(() => {
                 $(document).one('click', function () {
                     $('.popover').hide();
                     console.log('hide')
                 })
             }, 0);
+        }) 
+       
+
+        $('.wrap').on('click', function (e) {
+            e.stopPropagation()
         })
-           $('.wrap').on('click',function(e){
-               e.stopPropagation()
-           })
     </script>
 </body>
 
