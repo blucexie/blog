@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .clearfix:after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+        ul{
+            list-style: none;
+        }
+        .images {
+            display: flex;
+            align-items: flex-start;
+            transition: all 1s;
+        }
+        
+        .wrap {
+            width: 920px;
+            overflow: hidden;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+        }
+
+        .red {
+           background: #CACACA;
+        }
+
+        .btns {
+            background: linear-gradient(#FAFAFA, #ECECEC);
+            border-top: 1px solid #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 45px;
+        }
+        .btns ul li{
+            float: left;
+            width: 60px;
+            height: 45px;
+            line-height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-left: 1px solid #ccc;
+        }
+        .btns ul li:last-child{
+            border-right: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="images">
+            <img src="img/macbook.jpg" width="920" alt="">
+            <img src="img/iphone.jpg" width="920" alt="">
+            <img src="img/info.jpg" width="920" alt="">
+            <img src="img/imac.jpg" width="920" alt="">
+        </div>
+        <div class="btns">
+            <ul class="clearfix">
+                <li class="red">
+                    <img src="img/thumb_macbook.png" alt="">
+                </li>
+                <li>
+                    <img src="img/thumb_iphone.png" alt="">
+                </li>
+                <li>
+                    <img src="img/thumb_about.png" alt="">
+                </li>
+                <li>
+                    <img src="img/thumb_imac.png" alt="">
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let allBtns = $('.btns ul li');
+        for (let i = 0; i < allBtns.length; i++) {
+            $(allBtns[i]).on('click', function (x) {
+                let index = $(x.currentTarget).index();
+                let s = index * -920;
+                $('.images').css({
+                    transform: 'translateX(' + s + 'px)'
+                })
+                n = index;
+                allBtns.eq(n).addClass('red').siblings('.red').removeClass('red');
+            })
+        }
+
+        let n = 0;
+        let size = allBtns.length;
+        //  allBtns.eq(n % size).trigger('click').addClass('red').siblings('.red').removeClass('red');
+        let timerId = setTimer()
+
+        function setTimer() {
+            return setInterval(() => {
+                n++;
+                allBtns.eq(n % size).trigger('click').addClass('red').siblings('.red').removeClass('red');
+
+            }, 3000)
+        }
+        $('.wrap').on('mouseenter', function () {
+            clearInterval(timerId);
+        })
+        $('.wrap').on('mouseleave', function () {
+            timerId = setTimer();
+        })
+    </script>
+</body>
+
+</html>
