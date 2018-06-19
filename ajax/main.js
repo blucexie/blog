@@ -7,12 +7,6 @@ window.jQuery = function(nodeOrSelector){
   }
   
 window.jQuery.ajax = function ({url,method,body,successFn,failFn,headers}) {
-  /*   let url = options.url;
-    let method = options.method;
-    let body = options.body;
-    let successFn = options.successFn;
-    let failFn = options.failFn;
- */
     let request = new XMLHttpRequest();
     request.open(method,url);
     for(let key in headers) {
@@ -48,6 +42,9 @@ myButton.addEventListener('click',(e)=>{
             f1.call(undefined,x);
             f2.call(undefined,x);
         },
-        failFn:(x)=>{console.log(x);console.log(x.status)}
+        failFn:(x)=>{
+          console.log(x);
+          console.log(x.status)
+        }
     })
 })
