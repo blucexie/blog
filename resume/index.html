@@ -4,6 +4,7 @@
 <head>
     <title>个人简历</title>
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
     <script src="//at.alicdn.com/t/font_672444_vczkhd96jws1c3di.js"></script>
     <style type="text/css">
         .loading {
@@ -69,24 +70,29 @@
             fill: currentColor;
             overflow: hidden;
         }
-       /*  [data-x].active{
+
+        /*  [data-x].active{
             border: 10px solid #f00;
         } */
-        [data-x].offset{
+
+        [data-x].offset {
             transform: translateY(100px);
         }
-        [data-x]{
+
+        [data-x] {
             transform: translateY(0);
             transition: all 0.5s;
         }
-        [data-x].animate{
+
+        [data-x].animate {
             animation: slideUp 0.5s;
         }
-        @keyframes slideUp{
-            0%{
+
+        @keyframes slideUp {
+            0% {
                 transform: translateY(-30px);
             }
-            100%{
+            100% {
                 transform: translateY(0)
             }
         }
@@ -117,7 +123,7 @@
                             <li>作品1</li>
                             <li>作品2</li>
                             <li>作品3</li>
-                        </ul>  
+                        </ul>
                     </li>
                     <li>
                         <a href="#siteBlog">博客</a>
@@ -125,7 +131,7 @@
                             <li>博客1</li>
                             <li>博客2</li>
                             <li>博客3</li>
-                        </ul>  
+                        </ul>
                     </li>
                     <li>
                         <a href="#">日历</a>
@@ -144,8 +150,8 @@
     <div class="banner">
         <div class="mask"></div>
     </div>
-    <main >
-        <div data-x id="siteAbout"  class="usercard">
+    <main>
+        <div data-x id="siteAbout" class="usercard">
             <div class="pictureAndText clearfix">
                 <div class="picture">
                     <img src="img/avatar.jpg" width="299" height="347" alt="头像">
@@ -247,7 +253,7 @@
     </section>
     <section data-x id="siteWork" class="portfolio">
         <h2>作品集</h2>
-        <nav>
+       <!--  <nav>
             <ol class="clearfix">
                 <li id="li1">所有</li>
                 <li id="li2">框架</li>
@@ -256,23 +262,28 @@
             <div id="bar" class="bar status-1">
                 <div class="barInner "></div>
             </div>
-        </nav>
-
-        <div class="jobs">
-            <div class="big">
-                <img src="img/p1.jpg" alt="">
+        </nav> -->
+        <div class="mySlides">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <img class="swiper-slide" src="img/works/nav-page.jpg" alt="">
+                    <img class="swiper-slide" src="img/works/canvas.jpg" alt="">
+                    <img class="swiper-slide" src="img/works/apple-style-slides.jpg" alt="">
+                </div>
+                <!-- 如果需要分页器 -->
+                <div class="swiper-pagination"></div>
             </div>
-            <div class="small small1">
-                <img src="img/P2.jpg" alt="">
-            </div>
-            <div class="small small2">
-                <img src="img/p3.jpg" alt="">
-            </div>
+            
+            <!-- 如果需要导航按钮 -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
         </div>
+       
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.1.1/Tween.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
     <script>
-        li1.onclick = function () {
+       /*  li1.onclick = function () {
             bar.className = 'bar status-1'
         }
         li2.onclick = function () {
@@ -280,31 +291,32 @@
         }
         li3.onclick = function () {
             bar.className = 'bar status-3'
-        }
+        } */
         setTimeout(function () {
             siteWelcome.classList.remove('active')
         }, 100)
 
-       
+
 
         let liTags = document.querySelectorAll('nav.menu > ul > li');
-        for(let i = 0;i< liTags.length;i++){
-            liTags[i].onmouseenter = function(x){
+        for (let i = 0; i < liTags.length; i++) {
+            liTags[i].onmouseenter = function (x) {
                 x.currentTarget.classList.add('active')
             }
-            liTags[i].onmouseleave = function(x){
+            liTags[i].onmouseleave = function (x) {
                 x.currentTarget.classList.remove('active')
             }
         }
 
-          let aTags = document.querySelectorAll('nav.menu > ul > li>a');
-            function animate(time) {
-                requestAnimationFrame(animate);
-                TWEEN.update(time);
-            }
+        let aTags = document.querySelectorAll('nav.menu > ul > li>a');
+
+        function animate(time) {
             requestAnimationFrame(animate);
-          for(var i = 0;i<aTags.length;i++){
-            aTags[i].onclick = function(e){
+            TWEEN.update(time);
+        }
+        requestAnimationFrame(animate);
+        for (var i = 0; i < aTags.length; i++) {
+            aTags[i].onclick = function (e) {
                 e.preventDefault();
                 let a = e.currentTarget;
                 let href = a.getAttribute('href');
@@ -314,58 +326,82 @@
 
                 let targetTop = top - 80;
                 let s = targetTop - currentTop // 路程
-                var coords = { y: currentTop}; // 起始位置
-                var t = Math.abs((s/100)*300) // 时间
-                if(t>500){ t = 500 }
+                var coords = {
+                    y: currentTop
+                }; // 起始位置
+                var t = Math.abs((s / 100) * 300) // 时间
+                if (t > 500) {
+                    t = 500
+                }
                 var tween = new TWEEN.Tween(coords) // 起始位置
-                .to({ y: targetTop}, t) // 结束位置 和 时间
-                .easing(TWEEN.Easing.Cubic.InOut) // 缓动类型
-                .onUpdate(function() {
-                    // coords.y 已经变了
-                    window.scrollTo(0,coords.y) // 如何更新界面
-                })
-                .start(); // 开始缓动
+                    .to({
+                        y: targetTop
+                    }, t) // 结束位置 和 时间
+                    .easing(TWEEN.Easing.Cubic.InOut) // 缓动类型
+                    .onUpdate(function () {
+                        // coords.y 已经变了
+                        window.scrollTo(0, coords.y) // 如何更新界面
+                    })
+                    .start(); // 开始缓动
             }
-          }
-          let specialTags = document.querySelectorAll('[data-x]');
-            for(let i=0;i<specialTags.length;i++){
-                specialTags[i].classList.add('offset'); 
-                
-            }
-            setTimeout(function () {
-                initSlideUp();
+        }
+        let specialTags = document.querySelectorAll('[data-x]');
+        for (let i = 0; i < specialTags.length; i++) {
+            specialTags[i].classList.add('offset');
+
+        }
+        setTimeout(function () {
+            initSlideUp();
         }, 200)
-          window.onscroll = function (e) {
+        window.onscroll = function (e) {
             if (window.scrollY) {
                 topNavBar.classList.add('sticky');
             } else {
                 topNavBar.classList.remove('sticky');
             }
 
-           initSlideUp();
+            initSlideUp();
         }
-          
-          function initSlideUp(){
+
+        function initSlideUp() {
             let specialTags = document.querySelectorAll('[data-x]');
             let minIndex = 0;
-            for(let i=0;i<specialTags.length;i++){
-                if(Math.abs(specialTags[i].offsetTop-window.scrollY)<Math.abs(specialTags[minIndex].offsetTop - window.scrollY)){
+            for (let i = 0; i < specialTags.length; i++) {
+                if (Math.abs(specialTags[i].offsetTop - window.scrollY) < Math.abs(specialTags[minIndex].offsetTop -
+                        window.scrollY)) {
                     minIndex = i;
                 }
             }
             specialTags[minIndex].classList.remove('offset')
-            for(let i = 0;i<specialTags.length;i++){
+            for (let i = 0; i < specialTags.length; i++) {
                 specialTags[i].classList.remove('active');
             }
-           let id = specialTags[minIndex].id;
-           let a = document.querySelector('a[href= "#'+id+'"]');
-           let li = a.parentNode;
-           let brothers = li.parentNode.children;
-           for(let i=0;i<brothers.length;i++){
-            brothers[i].classList.remove('heightlight')
-           }
-           li.classList.add('heightlight')
-          }
+            let id = specialTags[minIndex].id;
+            let a = document.querySelector('a[href= "#' + id + '"]');
+            let li = a.parentNode;
+            let brothers = li.parentNode.children;
+            for (let i = 0; i < brothers.length; i++) {
+                brothers[i].classList.remove('heightlight')
+            }
+            li.classList.add('heightlight')
+        }
+
+        var mySwiper = new Swiper('.swiper-container', {
+            loop: true,
+
+            // 如果需要分页器
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+            // 如果需要前进后退按钮
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+        
+        })
     </script>
 </body>
 

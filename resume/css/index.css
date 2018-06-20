@@ -357,6 +357,9 @@ section.portfolio>nav .bar.status-3 .barInner{
     margin-left: 140px;
     width: 96px;
 }
+section.portfolio h2{
+    margin-bottom: 32px;
+}
 .jobs{
   position: relative;
   margin-top: 28px;
@@ -376,4 +379,18 @@ section.portfolio>nav .bar.status-3 .barInner{
 .jobs .small2{
   top: 298px;
   left: 635px
+}
+
+.swiper-container {
+    width: 668px;
+    height: 501px;
+}  
+section.portfolio .swiper-button-prev,
+section.portfolio .swiper-button-next{
+    background-color: white;
+    width: 64px;
+    height: 64px;
+   /*  right: 100%;
+    left: auto; */
+    border-radius: 50%;
 }
