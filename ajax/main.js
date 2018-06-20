@@ -36,8 +36,6 @@ window.jQuery.ajax = function ({url,method,body,headers}) {
 }
 
 
-
-
 myButton.addEventListener('click',(e)=>{
    let promise =  window.jQuery.ajax({
         url:'./xxx',
@@ -52,4 +50,6 @@ myButton.addEventListener('click',(e)=>{
       (request)=>{console.log(request)}
     )
 })
+
+
 
