@@ -100,9 +100,9 @@
 </head>
 
 <body>
-    <div id="siteWelcome" class="site-welcome active">
+   <!--  <div id="siteWelcome" class="site-welcome active">
         <div class="loading"></div>
-    </div>
+    </div> -->
     <div id="topNavBar" class="topNavBar">
         <div class="topNavBar-inner clearfix">
             <a class="logo" href="#" alt="logo" style="float: left;">
@@ -273,7 +273,6 @@
                 <!-- 如果需要分页器 -->
                 <div class="swiper-pagination"></div>
             </div>
-            
             <!-- 如果需要导航按钮 -->
             <div class="swiper-button-prev"></div>
             <div class="swiper-button-next"></div>
@@ -282,6 +281,10 @@
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.1.1/Tween.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
+    <script src="js/init-swiper.js"></script>
+    <script src="js/auto-slide-up.js"></script>
+    <script src="js/sticky-topbar.js"></script>
+    <script src="js/smoothly-navigation.js"></script>
     <script>
        /*  li1.onclick = function () {
             bar.className = 'bar status-1'
@@ -292,7 +295,7 @@
         li3.onclick = function () {
             bar.className = 'bar status-3'
         } */
-        setTimeout(function () {
+     /*    setTimeout(function () {
             siteWelcome.classList.remove('active')
         }, 100)
 
@@ -307,102 +310,13 @@
                 x.currentTarget.classList.remove('active')
             }
         }
+ */
+      
 
-        let aTags = document.querySelectorAll('nav.menu > ul > li>a');
 
-        function animate(time) {
-            requestAnimationFrame(animate);
-            TWEEN.update(time);
-        }
-        requestAnimationFrame(animate);
-        for (var i = 0; i < aTags.length; i++) {
-            aTags[i].onclick = function (e) {
-                e.preventDefault();
-                let a = e.currentTarget;
-                let href = a.getAttribute('href');
-                let element = document.querySelector(href);
-                let top = element.offsetTop;
-                let currentTop = window.scrollY
-
-                let targetTop = top - 80;
-                let s = targetTop - currentTop // 路程
-                var coords = {
-                    y: currentTop
-                }; // 起始位置
-                var t = Math.abs((s / 100) * 300) // 时间
-                if (t > 500) {
-                    t = 500
-                }
-                var tween = new TWEEN.Tween(coords) // 起始位置
-                    .to({
-                        y: targetTop
-                    }, t) // 结束位置 和 时间
-                    .easing(TWEEN.Easing.Cubic.InOut) // 缓动类型
-                    .onUpdate(function () {
-                        // coords.y 已经变了
-                        window.scrollTo(0, coords.y) // 如何更新界面
-                    })
-                    .start(); // 开始缓动
-            }
-        }
-        let specialTags = document.querySelectorAll('[data-x]');
-        for (let i = 0; i < specialTags.length; i++) {
-            specialTags[i].classList.add('offset');
-
-        }
-        setTimeout(function () {
-            initSlideUp();
-        }, 200)
-        window.onscroll = function (e) {
-            if (window.scrollY) {
-                topNavBar.classList.add('sticky');
-            } else {
-                topNavBar.classList.remove('sticky');
-            }
-
-            initSlideUp();
-        }
-
-        function initSlideUp() {
-            let specialTags = document.querySelectorAll('[data-x]');
-            let minIndex = 0;
-            for (let i = 0; i < specialTags.length; i++) {
-                if (Math.abs(specialTags[i].offsetTop - window.scrollY) < Math.abs(specialTags[minIndex].offsetTop -
-                        window.scrollY)) {
-                    minIndex = i;
-                }
-            }
-            specialTags[minIndex].classList.remove('offset')
-            for (let i = 0; i < specialTags.length; i++) {
-                specialTags[i].classList.remove('active');
-            }
-            let id = specialTags[minIndex].id;
-            let a = document.querySelector('a[href= "#' + id + '"]');
-            let li = a.parentNode;
-            let brothers = li.parentNode.children;
-            for (let i = 0; i < brothers.length; i++) {
-                brothers[i].classList.remove('heightlight')
-            }
-            li.classList.add('heightlight')
-        }
-
-        var mySwiper = new Swiper('.swiper-container', {
-            loop: true,
-
-            // 如果需要分页器
-            pagination: {
-                el: '.swiper-pagination',
-            },
-
-            // 如果需要前进后退按钮
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-
-        
-        })
+       
     </script>
 </body>
+
 
 </html>
