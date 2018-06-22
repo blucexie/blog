@@ -390,7 +390,146 @@ section.portfolio .swiper-button-next{
     background-color: white;
     width: 64px;
     height: 64px;
-   /*  right: 100%;
-    left: auto; */
     border-radius: 50%;
 }
+.loading {
+    width: 200px;
+    height: 200px;
+    position: relative;
+}
+
+.loading::before,
+.loading::after {
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-radius: 50%;
+    background: #333;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    animation: s 1.5s linear infinite;
+}
+
+.loading::after {
+    animation-delay: 0.75s;
+}
+
+@keyframes s {
+    0% {
+        width: 0px;
+        height: 0px;
+        opacity: 1;
+    }
+    100% {
+        width: 50px;
+        height: 50px;
+        opacity: 0;
+    }
+}
+
+.site-welcome {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #888;
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.site-welcome.active {
+    display: flex;
+}
+
+.icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+/*  [data-x].active{
+    border: 10px solid #f00;
+} */
+
+[data-x].offset {
+    transform: translateY(100px);
+}
+
+[data-x] {
+    transform: translateY(0);
+    transition: all 0.5s;
+}
+
+[data-x].animate {
+    animation: slideUp 0.5s;
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(-30px);
+    }
+    100% {
+        transform: translateY(0)
+    }
+}
+section.portfolio{
+    margin-bottom: 100px;
+}
+.message{
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.message ol li{
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+   
+}
+.message h2{
+    color: #3d4451;
+    font-size: 34px;
+    font-weight: 600;
+    margin-bottom: 60px;
+}
+.messageListWrap{
+    max-width: 700px;
+    height: 700px;
+    margin: 0 auto;
+}
+#messageList{
+    max-width: 800px;
+    margin:  0 auto;
+}
+#postMessageForm{
+    display: flex;
+    align-items: center;
+    justify-content: center;;
+}
+#postMessageForm input{
+    height: 30px;
+    border: 1px solid#ddd;
+    margin: 0 10px;
+}
+#postMessageForm input[type='submit']{
+    width:80px;
+    height: 30px;
+    line-height: 30px;
+    background-color: #e6686a;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    
+}
+
