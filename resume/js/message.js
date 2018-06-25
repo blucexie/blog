@@ -51,7 +51,6 @@
         bindEvents:function(){
             this.form.addEventListener('submit',(e)=>{
                 e.preventDefault();
-                console.log(this)
                 this.saveMessage()
             })
         
