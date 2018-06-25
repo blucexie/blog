@@ -49,9 +49,10 @@
             });
         },
         bindEvents:function(){
-            this.form.addEventListener('submit',function(e){
+            this.form.addEventListener('submit',(e)=>{
                 e.preventDefault();
-                this.saveMessage();
+                console.log(this)
+                this.saveMessage()
             })
         
         },
