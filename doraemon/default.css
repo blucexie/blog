@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #D4ECF9;
+    height: 100vh;
+}
+
+.code-wrapper {
+    flex: 1;
+    height: 50%;
+}
+
+.preview-wrapper {
+    flex: 1;
+    height: 50%;
+}
+
+#code {
+    font-size: 12px;
+    overflow: hidden;
+    height: 100%;
+    border: 1px solid #fff;
+    background-color: #fff;
+}

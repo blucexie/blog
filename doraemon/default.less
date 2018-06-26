@@ -1,0 +1,444 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+body {
+    background-color: #D4ECF9;
+}
+
+.main {
+    width: 600/@r;
+    height: auto;
+    position: relative;
+    margin: 20% auto;
+    animation: volar 1s linear 2s infinite alternate;
+}
+@keyframes volar{
+    0%{
+        top: 0;
+    }
+    25%{
+        top: 0;
+    }
+    50%{
+        top: 50/@r;
+    }
+    75%{
+        top: 75/@r;
+    }
+    100%{
+        top: 0;
+    }
+}
+.header{
+    width: 200/@r;
+    height: 200/@r;
+    border-radius: 50%;
+    border: 2/@r solid #000;
+    margin: 0 auto;
+    background-color: #35A1C9;
+    position: relative;
+    overflow: hidden;
+    z-index: 100;
+}
+.headerInside{
+    width: 170/@r;
+    height: 170/@r;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 2/@r solid #000;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+/* 画眼睛 */
+
+.eyes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.eyes>div {
+    background-color: #fff;
+    width: 48/@r;
+    height: 48/@r;
+    border-radius: 50%;
+    border: 1/@r solid #000;
+    overflow: hidden;
+
+}
+
+.pupila,
+.pupila2 {
+    width: 23/@r;
+    height: 15/@r;
+    border-radius: 50%;
+    background-color: #000;
+    position: absolute;
+    top: 20/@r;
+    transform: rotate(90deg);
+}
+
+.pupila {
+    left: 58/@r;
+}
+
+.iris1,
+.iris2 {
+    width: 6/@r;
+    height: 3/@r;
+    border-radius: 50%;
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.rightEye-animation {
+    width: 48/@r;
+    height: 48/@r;
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+    animation-duration: 1s;
+    animation-iteration-count: 3;
+    animation-name: pulse;
+    z-index: 100;
+}
+
+@keyframes pulse {
+    to {
+        bottom: 100/@r;
+    }
+    from {
+        bottom: 0;
+    }
+}
+
+.rightEye-animation:after {
+    content: "⌒";
+    width: 48/@r;
+    position: absolute;
+    text-align: center;
+    color: #000;
+    font-size: 30/@r;
+    font-weight: bold;
+    line-height: 2.5;
+}
+
+/* 画鼻子 */
+
+.noss {
+    width: 34/@r;
+    height: 34/@r;
+    border-radius: 50%;
+    border: 1/@r solid #000;
+    background-color: #B11735;
+    margin: 0 auto;
+    position: relative;
+    top: -8/@r;
+}
+
+.nostril {
+    width: 10/@r;
+    height: 10/@r;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 6/@r;
+    left: 8/@r;
+}
+
+/* 鼻唇沟 */
+
+.nasolabialSulcus {
+    width: 2/@r;
+    height: 20/@r;
+    background-color: #000;
+    margin: 0 auto;
+    position: relative;
+    top: -8/@r;
+}
+
+/* 嘴 */
+
+.mouth {
+    width: 140/@r;
+    height: 70/@r;
+    background-color: #B11635;
+    margin: 0 auto;
+    position: relative;
+    top: -13/@r;
+    border-radius: 140/@r 140/@r 0 0;
+    transform: rotate(180deg);
+    overflow: hidden;
+}
+
+.mouthInside {
+    position: relative;
+    width: 100/@r;
+    height: 90/@r;
+    margin: 0 auto;
+    top: -50/@r;
+    transform: rotate(180deg);
+}
+
+.mouthInside::before,
+.mouthInside::after {
+    content: "";
+    display: block;
+    width: 50/@r;
+    height: 80/@r;
+    background-color: #CA2533;
+    position: absolute;
+    top: 0;
+    left: 50/@r;
+    border-radius: 50/@r 50/@r 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+
+.mouthInside::after {
+    transform: rotate(45deg);
+    left: 0;
+    transform-origin: 100% 100%;
+}
+
+/* 胡子 */
+.leftBeard {
+    position: relative;
+    float: left;
+    top: 60/@r;
+    left: 16/@r;
+}
+.rightBeard{
+    position: relative;
+    float: right;
+    top: 60/@r;
+   right: 16/@r;
+} 
+.leftBeard>div,.rightBeard>div {
+    width: 60/@r;
+    height: 2/@r;
+    background-color: #000;
+    margin-bottom: 18/@r;
+}
+.leftBeard .l1{
+    transform: rotate(25deg);
+}
+.leftBeard .l2, .rightBeard .r2{
+    margin-bottom: 10/@r;
+}
+.leftBeard .l3{
+    transform: rotate(-10deg);
+}
+.rightBeard .r1{
+    transform: rotate(-25deg);
+}
+.rightBeard .r3{
+    transform: rotate(10deg);
+}
+/* 头上 */
+.dragonfly{
+    width: 100/@r;
+    height: 5/@r;
+    background: transparent;
+    margin: 0 auto;
+    position: relative;
+    margin-bottom: 10/@r;
+}
+.wing{
+    width: 100/@r;
+    height: 5/@r;
+    margin: 0 auto;
+    background-color: grey;
+    border-radius: 5/@r;    
+    border: 2/@r solid grey;
+    opacity: 0.6;
+    position: absolute;
+    top: 5/@r;
+    animation-name: rotar;
+    animation-duration:.1s;
+    animation-iteration-count:infinite;
+    animation-timing-function:linear;
+}
+@keyframes rotar{
+    0%{
+       transform:rotate3D(0, 1, 0, 0deg)
+    }
+    100%{
+        transform:rotate3D(0, 1, 0, 360deg)
+    }
+}
+.dragonflyBody{
+    width: 20/@r;
+    height: 10/@r;
+    display: block;
+    border: 2/@r solid #555;
+    background-color: #BD8D22;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 20/@r 20/@r 0 0;
+}
+.dragonflyBodyInside{
+    width: 7/@r;
+    height: 30/@r;
+    background-color: #FCC136;
+    border: 2/@r solid #000;
+    position: relative;
+    top: 7/@r;
+    margin: 0 auto;
+}
+/* 身体 */
+.content{
+    width: 142/@r;
+    height: 172/@r;
+    background-color: #35A1C9;
+    border: 2/@r solid #000;
+    border-radius: 50% 50% 50% 50%   60% 60% 40% 40%;
+    margin: 0 auto;
+    position: relative;
+    top: -100/@r;
+    z-index: 2;
+}
+.scarf{
+    width: 100/@r;
+    height: 50/@r;
+    margin: 0 auto;
+    background-color: #A1172E;
+    position: relative;
+    top: 55/@r;
+    border-radius: 100/@r/50/@r;
+    z-index: 2;
+}
+.sign{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: -60/@r;
+    margin: auto;
+    width: 35/@r;
+    height: 35/@r;
+    background-color: #F19629;
+    border-radius: 50%;
+    border: 2/@r solid #000;
+    z-index: 3;
+}
+.signCircular{
+    width: 8/@r;
+    height: 8/@r;
+    background-color: #000;
+    border-radius:50%; 
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 8/@r;
+    bottom: 0;
+    margin: auto;
+}
+.signLine{
+    width: 15/@r;
+    height: 2/@r;
+    background-color: #000;
+    margin: 0 auto;
+    position: relative;
+    top: 25/@r;
+}
+/* 肚皮 */
+.belly{
+    width: 100/@r;
+    height: 60/@r;
+    margin: 0 auto;
+    position: relative;
+    top: 40/@r;
+    background-color: #fff;
+    border-radius: 100/@r 60/@r;
+}
+.bellyInside{
+    width: 60/@r;
+    height: 30/@r;
+    border-radius:  0 0 60/@r 60/@r;
+    background-color: #fff;
+    border:2/@r solid #000;
+    position: absolute;
+    top: 20/@r;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+/* 手 */
+.hand{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.arm{
+    width: 55/@r;
+    height: 85/@r;
+    margin: 0 auto;
+    background-color: #35A1C9;
+    border-radius: 55/@r 85/@r;
+    border: 2/@r solid #000;
+    position: relative;
+    top: -90/@r;
+}
+.leftArm{
+    left: -46/@r;
+    transform: rotate(-45deg);
+}
+.rightArm{
+    right: -46/@r;
+    transform: rotate(45deg);
+}
+.leftHand,.rightHand{
+    width: 60/@r;
+    height: 60/@r;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 2/@r solid #000;
+    position: absolute;
+}
+.leftHand{
+    top: -34/@r;
+    right: -10/@r;
+}
+.rightHand{
+    top: -34/@r;
+    left: -10/@r;
+}
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.leftFooter,.rightFooter{
+   width: 55/@r;
+   height: 77/@r;
+   background-color: #fff; 
+   border-radius: 55/@r 77/@r;
+   border: 2/@r solid #000;
+   position: relative; 
+   bottom: 150/@r;
+}

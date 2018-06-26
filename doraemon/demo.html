@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css画一只doraemon</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        body {
+            background-color: #D4ECF9;
+        }
+
+        .main {
+            width: 600px;
+            height: auto;
+            position: relative;
+            margin: 20% auto;
+            animation: volar 1s linear 2s infinite alternate;
+        }
+
+        @keyframes volar {
+            0% {
+                top: 0;
+            }
+            25% {
+                top: 0;
+            }
+            50% {
+                top: 50px;
+            }
+            75% {
+                top: 75px;
+            }
+            100% {
+                top: 0;
+            }
+        }
+
+        .header {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 2px solid #000;
+            margin: 0 auto;
+            background-color: #35A1C9;
+            position: relative;
+            overflow: hidden;
+            z-index: 100;
+        }
+
+        .headerInside {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            background-color: #fff;
+            border: 2px solid #000;
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+        }
+
+        /* 画眼睛 */
+
+        .eyes {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .eyes>div {
+            background-color: #fff;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1px solid #000;
+            overflow: hidden;
+
+        }
+
+        .pupila,
+        .pupila2 {
+            width: 23px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: #000;
+            position: absolute;
+            top: 20px;
+            transform: rotate(90deg);
+        }
+
+        .pupila {
+            left: 58px;
+        }
+
+        .iris1,
+        .iris2 {
+            width: 6px;
+            height: 3px;
+            border-radius: 50%;
+            background-color: #fff;
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+        }
+
+        .rightEye-animation {
+            width: 48px;
+            height: 48px;
+            background-color: #fff;
+            position: relative;
+            overflow: hidden;
+            animation-duration: 1s;
+            animation-iteration-count: 3;
+            animation-name: pulse;
+            z-index: 100;
+        }
+
+        @keyframes pulse {
+            to {
+                bottom: 100px;
+            }
+            from {
+                bottom: 0;
+            }
+        }
+
+        .rightEye-animation:after {
+            content: "⌒";
+            width: 48px;
+            position: absolute;
+            text-align: center;
+            color: #000;
+            font-size: 30px;
+            font-weight: bold;
+            line-height: 2.5;
+        }
+
+        /* 画鼻子 */
+
+        .noss {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 1px solid #000;
+            background-color: #B11735;
+            margin: 0 auto;
+            position: relative;
+            top: -8px;
+        }
+
+        .nostril {
+            width: 10px;
+            height: 10px;
+            background-color: #fff;
+            border-radius: 50%;
+            position: absolute;
+            top: 6px;
+            left: 8px;
+        }
+
+        /* 鼻唇沟 */
+
+        .nasolabialSulcus {
+            width: 2px;
+            height: 20px;
+            background-color: #000;
+            margin: 0 auto;
+            position: relative;
+            top: -8px;
+        }
+
+        /* 嘴 */
+
+        .mouth {
+            width: 140px;
+            height: 70px;
+            background-color: #B11635;
+            margin: 0 auto;
+            position: relative;
+            top: -13px;
+            border-radius: 140px 140px 0 0;
+            transform: rotate(180deg);
+            overflow: hidden;
+        }
+
+        .mouthInside {
+            position: relative;
+            width: 100px;
+            height: 90px;
+            margin: 0 auto;
+            top: -50px;
+            transform: rotate(180deg);
+        }
+
+        .mouthInside::before,
+        .mouthInside::after {
+            content: "";
+            display: block;
+            width: 50px;
+            height: 80px;
+            background-color: #CA2533;
+            position: absolute;
+            top: 0;
+            left: 50px;
+            border-radius: 50px 50px 0 0;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+        }
+
+        .mouthInside::after {
+            transform: rotate(45deg);
+            left: 0;
+            transform-origin: 100% 100%;
+        }
+
+        /* 胡子 */
+
+        .leftBeard {
+            position: relative;
+            float: left;
+            top: 60px;
+            left: 16px;
+        }
+
+        .rightBeard {
+            position: relative;
+            float: right;
+            top: 60px;
+            right: 16px;
+        }
+
+        .leftBeard>div,
+        .rightBeard>div {
+            width: 60px;
+            height: 2px;
+            background-color: #000;
+            margin-bottom: 18px;
+        }
+
+        .leftBeard .l1 {
+            transform: rotate(25deg);
+        }
+
+        .leftBeard .l2,
+        .rightBeard .r2 {
+            margin-bottom: 10px;
+        }
+
+        .leftBeard .l3 {
+            transform: rotate(-10deg);
+        }
+
+        .rightBeard .r1 {
+            transform: rotate(-25deg);
+        }
+
+        .rightBeard .r3 {
+            transform: rotate(10deg);
+        }
+
+        /* 头上 */
+
+        .dragonfly {
+            width: 100px;
+            height: 5px;
+            background: transparent;
+            margin: 0 auto;
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        .wing {
+            width: 100px;
+            height: 5px;
+            margin: 0 auto;
+            background-color: grey;
+            border-radius: 5px;
+            border: 2px solid grey;
+            opacity: 0.6;
+            position: absolute;
+            top: 5px;
+            animation-name: rotar;
+            animation-duration: .1s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        @keyframes rotar {
+            0% {
+                transform: rotate3D(0, 1, 0, 0deg)
+            }
+            100% {
+                transform: rotate3D(0, 1, 0, 360deg)
+            }
+        }
+
+        .dragonflyBody {
+            width: 20px;
+            height: 10px;
+            display: block;
+            border: 2px solid #555;
+            background-color: #BD8D22;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .dragonflyBodyInside {
+            width: 7px;
+            height: 30px;
+            background-color: #FCC136;
+            border: 2px solid #000;
+            position: relative;
+            top: 7px;
+            margin: 0 auto;
+        }
+
+        /* 身体 */
+
+        .content {
+            width: 142px;
+            height: 172px;
+            background-color: #35A1C9;
+            border: 2px solid #000;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            margin: 0 auto;
+            position: relative;
+            top: -100px;
+            z-index: 2;
+        }
+
+        .scarf {
+            width: 100px;
+            height: 50px;
+            margin: 0 auto;
+            background-color: #A1172E;
+            position: relative;
+            top: 55px;
+            border-radius: 100px/50px;
+            z-index: 2;
+        }
+
+        .sign {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: -60px;
+            margin: auto;
+            width: 35px;
+            height: 35px;
+            background-color: #F19629;
+            border-radius: 50%;
+            border: 2px solid #000;
+            z-index: 3;
+        }
+
+        .signCircular {
+            width: 8px;
+            height: 8px;
+            background-color: #000;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 8px;
+            bottom: 0;
+            margin: auto;
+        }
+
+        .signLine {
+            width: 15px;
+            height: 2px;
+            background-color: #000;
+            margin: 0 auto;
+            position: relative;
+            top: 25px;
+        }
+
+        /* 肚皮 */
+
+        .belly {
+            width: 100px;
+            height: 60px;
+            margin: 0 auto;
+            position: relative;
+            top: 40px;
+            background-color: #fff;
+            border-radius: 100px/60px;
+        }
+
+        .bellyInside {
+            width: 60px;
+            height: 30px;
+            border-radius: 0 0 60px 60px;
+            background-color: #fff;
+            border: 2px solid #000;
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+        }
+
+        /* 手 */
+
+        .hand {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .arm {
+            width: 55px;
+            height: 85px;
+            margin: 0 auto;
+            background-color: #35A1C9;
+            border-radius: 55px/85px;
+            border: 2px solid #000;
+            position: relative;
+            top: -90px;
+        }
+
+        .leftArm {
+            left: -46px;
+            transform: rotate(-45deg);
+        }
+
+        .rightArm {
+            right: -46px;
+            transform: rotate(45deg);
+        }
+
+        .leftHand,
+        .rightHand {
+            width: 60px;
+            height: 60px;
+            background-color: #fff;
+            border-radius: 50%;
+            border: 2px solid #000;
+            position: absolute;
+        }
+
+        .leftHand {
+            top: -34px;
+            right: -10px;
+        }
+
+        .rightHand {
+            top: -34px;
+            left: -10px;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .leftFooter,
+        .rightFooter {
+            width: 55px;
+            height: 77px;
+            background-color: #fff;
+            border-radius: 55px/77px;
+            border: 2px solid #000;
+            position: relative;
+            bottom: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="dragonfly">
+            <div class="wing"></div>
+            <div class="dragonflyBody">
+                <div class="dragonflyBodyInside"></div>
+            </div>
+        </div>
+        <div class="headerWrap">
+            <div class="header">
+                <div class="headerInside">
+                    <div class="eyes">
+                        <div class="leftEye">
+                            <div class="pupila">
+                                <div class="iris1"></div>
+                            </div>
+                        </div>
+                        <div class="rightEye">
+                            <div class="rightEye-animation">
+                            </div>
+                            <div class="pupila2">
+                                <div class="iris2"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="noss">
+                        <div class="nostril"></div>
+                    </div>
+                    <div class="nasolabialSulcus"></div>
+                    <div class="mouth">
+                        <div class="mouthInside">
+                        </div>
+                    </div>
+                </div>
+                <div class="leftBeard">
+                    <div class="l1"></div>
+                    <div class="l2"></div>
+                    <div class="l3"></div>
+                </div>
+                <div class="rightBeard">
+                    <div class="r1"></div>
+                    <div class="r2"></div>
+                    <div class="r3"></div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="scarf"></div>
+            <div class="sign">
+                <div class="signCircular"></div>
+                <div class="signLine"></div>
+            </div>
+            <div class="belly">
+                <div class="bellyInside"></div>
+            </div>
+            <div class="hand">
+                <div class="arm leftArm">
+                    <div class="leftHand"></div>
+                </div>
+                <div class="arm rightArm">
+                    <div class="rightHand"></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="leftFooter"></div>
+            <div class="rightFooter"></div>
+        </div>
+    </div>
+</body>
+
+</html>
