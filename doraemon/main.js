@@ -1,44 +1,51 @@
 ! function () {
+    let duration =20;
+    $('.actions').on('click','button',function(e){
+        let $button = $(e.currentTarget);
+        let speed = $button.attr('data-speed');
+        $button.addClass('active').siblings('.active').removeClass('active');
+
+        switch(speed){
+            case 'slow':
+            duration = 50
+            break
+            case 'normal':
+            duration =20
+            break
+            case 'fast':
+            duration =5
+            break
+        }
+       
+   })
+
     function writeCode(prefix, code, fn) {
         let container = document.querySelector('#code');
         let styleTag = document.querySelector('#styleTag');
         let n = 0;
-        let timer = setInterval(() => {
+         let timer; 
+         timer=  setTimeout(function run() {
             n += 1;
             container.innerHTML = code.substring(0, n);
             styleTag.innerHTML = code.substring(0, n);
             container.scrollTop = container.scrollHeight;
-            if (n >= code.length) {
-                clearInterval(timer);
+            if (n < code.length) {
+                timer= setTimeout(run,duration)
+            }else{
                 fn && fn.call();
             }
-        }, 5)
+            }, duration);
 
     }
     let code = `.main {
         width: 12rem;
         height: auto;
         position: relative;
-        margin: 20% auto;
-        animation: volar 1s linear 2s infinite alternate;
+        margin: 1% auto;
+        animation: volar 1s linear
+         2s infinite alternate;
     }
-    @keyframes volar {
-        0% {
-            top: 0;
-        }
-        25% {
-            top: 0;
-        }
-        50% {
-            top: 50px;
-        }
-        75% {
-            top: 75px;
-        }
-        100% {
-            top: 0;
-        }
-    }
+    /* 画头部 */
     .header {
         width: 4rem;
         height: 4rem;
@@ -154,7 +161,6 @@
         top: 0.12rem;
         left: 0.16rem;
     }
-    /* 鼻唇沟 */
     .nasolabialSulcus {
         width: 0.04rem;
         height: 0.4rem;
@@ -163,7 +169,7 @@
         position: relative;
         top: -0.16rem;
     }
-    /* 嘴 */
+    /* 画嘴 */
     .mouth {
         width: 2.8rem;
         height: 1.4rem;
@@ -202,7 +208,7 @@
         left: 0;
         transform-origin: 100% 100%;
     }
-    /* 胡子 */
+    /* 画胡子 */
     .leftBeard {
         position: relative;
         float: left;
@@ -238,7 +244,7 @@
     .rightBeard .r3 {
         transform: rotate(10deg);
     }
-    /* 头上 */
+    /* 头顶 */
     .dragonfly {
         width: 2rem;
         height: 0.1rem;
@@ -293,7 +299,7 @@
         top: 0.14rem;
         margin: 0 auto;
     }
-    /* 身体 */
+    /* 画身体 */
     .content {
         width: 2.84rem;
         height: 3.44rem;
@@ -349,7 +355,7 @@
         position: relative;
         top: 0.5rem;
     }
-    /* 肚皮 */
+    /* 画肚皮 */
     .belly {
         width: 2rem;
         height: 1.2rem;
@@ -372,7 +378,7 @@
         bottom: 0;
         margin: auto;
     }
-    /* 手 */
+    /* 画手 */
     .hand {
         display: flex;
         justify-content: center;
@@ -427,6 +433,25 @@
         border: 0.04rem solid #000;
         position: relative;
         bottom: 3rem;
+    }
+    @keyframes volar {
+        0% {
+            top: 0;
+        }
+        25% {
+            top: 0;
+        }
+        50% {
+            top: 50px;
+        }
+        75% {
+            top: 75px;
+        }
+        100% {
+            top: 0;
+        }
     }`
     writeCode('', code)
+
+  
 }.call();
