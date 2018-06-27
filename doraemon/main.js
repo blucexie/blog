@@ -41,7 +41,7 @@
         width: 12rem;
         height: auto;
         position: relative;
-        margin: 1% auto;
+        margin: 5% auto;
         animation: volar 1s linear
          2s infinite alternate;
     }
