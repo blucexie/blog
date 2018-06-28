@@ -1,7 +1,49 @@
 !function(){
-    var view = document.querySelector('.message');
+    var view = View('.message');
 
-    var model = {
+    var model =Model({resourceName:'Message'});
+
+    var controller = Controller({
+        init:function(view,model){
+            this.messageList = view.querySelector('#messageList');
+            this.form = view.querySelector('#postMessageForm');
+            this.loadMessage();
+        },
+        loadMessage:function(){
+            this.model.fatch().then( 
+                 (messages)=>{
+                     let array = messages.map((item)=> item.attributes);
+                     array.forEach((item)=>{
+                    let li = document.createElement('li');
+                    li.innerText = `${item.name}:${item.content}`;
+                    this.messageList.appendChild(li); 
+                })
+             });
+         }, 
+        bindEvents:function(){
+            this.form.addEventListener('submit',(e)=>{
+                e.preventDefault();
+                this.saveMessage()
+            })
+        
+        },
+        saveMessage:function(){
+            let myForm = this.form;
+            let name = myForm.querySelector('input[name=name]').value;
+            let content = myForm.querySelector('input[name=content]').value;
+
+            this.model.save({'name':name,'content':content}).then(function(object) {
+                let li = document.createElement('li');
+                li.innerText = `${object.attributes.name}:${object.attributes.content}`;
+                let messageList = document.querySelector('#messageList');
+                messageList.appendChild(li); 
+               myForm.querySelector('input[name=content]').value='';
+               myForm.querySelector('input[name=name]').value='';
+                
+            })
+        }
+    })
+/*     var model = {
         init:function(){
             var APP_ID = 'w0eKqP38P037YNAcNoQMtE5o-gzGzoHsz';
             var APP_KEY = '55wYwO5zpNsha3LYuBB0afV3';
@@ -22,9 +64,9 @@
                 content: content
             })   //Promise对象
         }
-    }
+    } */
 
-    var controller = {
+  /*   var controller = {
         view:null,
         model:null,
         messageList:null,
@@ -60,7 +102,7 @@
             let name = myForm.querySelector('input[name=name]').value;
             let content = myForm.querySelector('input[name=content]').value;
 
-            this.model.save(name,content).then(function(object) {
+            this.model.save({'name':name,'content':content}).then(function(object) {
                 let li = document.createElement('li');
                 li.innerText = `${object.attributes.name}:${object.attributes.content}`;
                 let messageList = document.querySelector('#messageList');
@@ -70,7 +112,7 @@
                 
             })
         }
-    }
+    } */
     controller.init(view,model);
 
 }.call()
