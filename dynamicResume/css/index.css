@@ -20,13 +20,14 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.2)
     }
   }
-  .token.selector,.token property{
+  .token.selector,.token.property{
     color: #000;
   }
   #paper{
-    background: #444; padding: 16px;
+    padding: 16px;
     position: fixed; width: 50%; height: 100%; right: 0;
     display: flex; align-items: flex-start;
+    justify-content: center;
   }
   #paper > .content{
     width: 100%;
@@ -43,3 +44,4 @@
     padding: 16px;
     overflow: auto;
   }
+
