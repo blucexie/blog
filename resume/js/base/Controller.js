@@ -1,19 +1,20 @@
 window.Controller = function (options) {
-    let init = options.init;
-    this.bindEvnets = options.bindEvnets;
-    return {
+    var init = options.init;
+    let object = {
         view: null,
         model:null,
         init: function (view,model) {
             this.view = view;
             this.model = model;
             this.model.init();
-            this.bindEvnets();
             init.call(this,view,model)
-        },
-        bindEvnets: function () {
-          
+            this.bindEvents.call(this);
         }
     }
-
+     for(let key in options){
+        if(key !=='init'){
+            object[key]= options[key]
+        }
+    }
+    return object;
 }
