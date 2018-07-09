@@ -13,7 +13,7 @@
                 window.clearInterval(timer);
                 fn.call()
             }
-        }, 0)
+        }, 50)
     }
 
     function writeMarkdown(markdown, fn) {
@@ -27,7 +27,7 @@
                 window.clearInterval(timer);
                 fn.call()
             }
-        }, 0)
+        }, 50)
     }
 
     let code = `/* 
@@ -107,38 +107,6 @@ XXX 学校毕业
 - QQ xxxxxxxx
 - Email xxxxxxxx
 - 手机 xxxxxxx
-
-- QQ xxxxxxxx
-- Email xxxxxxxx
-- 手机 xxxxxxx# 联系方式
-
-- QQ xxxxxxxx
-- Email xxxxxxxx
-- 手机 xxxxxxx# 联系方式
-
-- QQ xxxxxxxx
-- Email xxxxxxxx
-- 手机 xxxxxxx# 联系方式
-
-- QQ xxxxxxxx
-- Email xxxxxxxx
-- 手机 xxxxxxx# 联系方式
-
-- QQ xxxxxxxx
-- Email xxxxxxxx
-- 手机 xxxxxxx# 联系方式
-
-- QQ xxxxxxxx
-- Email xxxxxxxx
-- 手机 xxxxxxx# 联系方式
-
-- QQ xxxxxxxx
-- Email xxxxxxxx
-- 手机 xxxxxxx# 联系方式
-
-- QQ xxxxxxxx
-- Email xxxxxxxx
-- 手机 xxxxxxx# 联系方式
 
 - QQ xxxxxxxx
 - Email xxxxxxxx
