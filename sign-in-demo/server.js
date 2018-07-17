@@ -145,7 +145,7 @@ var server = http.createServer(function(request, response){
         response.statusCode = 401
       }
       response.end()
-    })
+    })  
   }else if(path==='/main.js'){
     let string = fs.readFileSync('./main.js', 'utf8')
     response.statusCode = 200
